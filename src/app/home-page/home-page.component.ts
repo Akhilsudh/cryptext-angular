@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,22 +7,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-  file:any;
+  file:File;
   fileReader: FileReader;
+  fileContent: String;
 
   constructor(private router: Router) { }
 
-  fileChanged(e) {
+  fileChanged(e: any) {
     this.file = e.target.files[0];
     this.fileReader = new FileReader();
   }
 
   uploadDocument() {
-    this.fileReader.onload = (e) => {
-      console.log(this.fileReader.result);
+    this.fileReader.onload = (e: Event) => {
+      this.fileContent = this.fileReader.result as String;
+      console.log(this.fileContent);
+      this.router.navigate(['/decrypted'], {state: {data: this.fileContent}});
     }
     this.fileReader.readAsText(this.file);
-    this.router.navigate(['/decrypted']);
+  }
+
+  @HostListener('unloaded')
+  ngOnDestroy() {
+    console.log('File data destroyed');
   }
 
   ngOnInit(): void {

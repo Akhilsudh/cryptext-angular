@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { TextEditorComponent } from './text-editor/text-editor.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CKEditorModule
+    CKEditorModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

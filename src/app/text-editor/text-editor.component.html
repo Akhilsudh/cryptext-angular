@@ -1,2 +1,4 @@
 <p>text-editor works!</p>
-<ckeditor [editor]="editorObj" data="<p>Hello, world!</p>"></ckeditor>
+<ckeditor [(ngModel)]="text" [config]="{ toolbar: [ 'heading', '|', 'bold', 'italic', 'link', '|', 'insertTable', '|', 'bulletedList', 'numberedList', '|', 'outdent', 'indent', '|', 'blockQuote', '|', 'undo', 'redo'] }" [editor]="editorObj"></ckeditor>
+
+<p>{{ text }}</p>
