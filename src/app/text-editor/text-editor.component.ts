@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 
 @Component({
   selector: 'app-text-editor',
@@ -7,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TextEditorComponent implements OnInit {
 
+  public editorObj = ClassicEditor;
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }
