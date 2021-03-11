@@ -19,20 +19,23 @@ export class HomePageComponent implements OnInit {
     this.fileReader = new FileReader();
   }
 
-  uploadDocument() {
+  openDocument() {
     if(this.fileReader) {
       this.fileReader.onload = (e: Event) => {
         this.fileContent = this.fileReader.result as String;
         console.log(this.fileContent);
         this.ds.setData(this.fileContent);
-        this.router.navigate(['/decrypted']);
-        // this.router.navigate(['/decrypted'], {state: {data: this.fileContent}});
+        this.router.navigate(['/decrypt']);
       }
       this.fileReader.readAsText(this.file);
     }
     else {
       console.log('Please select a file')
     }
+  }
+
+  createDocument() {
+    this.router.navigate(['/encrypt']);
   }
 
   @HostListener('unloaded')

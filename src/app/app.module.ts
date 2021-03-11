@@ -3,16 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TextEditorComponent } from './text-editor/text-editor.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { FormsModule } from '@angular/forms';
+import { DecryptComponent } from './decrypt/decrypt.component';
+import { EncryptComponent } from './encrypt/encrypt.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TextEditorComponent,
-    HomePageComponent
+    HomePageComponent,
+    DecryptComponent,
+    EncryptComponent
   ],
   imports: [
     BrowserModule,
