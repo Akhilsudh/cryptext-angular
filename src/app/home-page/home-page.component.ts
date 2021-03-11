@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-home-page',
@@ -11,7 +12,7 @@ export class HomePageComponent implements OnInit {
   fileReader: FileReader;
   fileContent: String;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private ds: DataService) { }
 
   fileChanged(e: any) {
     this.file = e.target.files[0];
@@ -19,16 +20,24 @@ export class HomePageComponent implements OnInit {
   }
 
   uploadDocument() {
-    this.fileReader.onload = (e: Event) => {
-      this.fileContent = this.fileReader.result as String;
-      console.log(this.fileContent);
-      this.router.navigate(['/decrypted'], {state: {data: this.fileContent}});
+    if(this.fileReader) {
+      this.fileReader.onload = (e: Event) => {
+        this.fileContent = this.fileReader.result as String;
+        console.log(this.fileContent);
+        this.ds.setData(this.fileContent);
+        this.router.navigate(['/decrypted']);
+        // this.router.navigate(['/decrypted'], {state: {data: this.fileContent}});
+      }
+      this.fileReader.readAsText(this.file);
     }
-    this.fileReader.readAsText(this.file);
+    else {
+      console.log('Please select a file')
+    }
   }
 
   @HostListener('unloaded')
   ngOnDestroy() {
+    this.file = null;
     console.log('File data destroyed');
   }
 
