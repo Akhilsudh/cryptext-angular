@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 import { DataService } from '../services/data.service';
+import { saveAs } from 'file-saver/src/FileSaver';
 
 @Component({
   selector: 'app-encrypt',
@@ -11,6 +12,7 @@ import { DataService } from '../services/data.service';
 export class EncryptComponent implements OnInit {
   public editorObj = ClassicEditor;
   public text: String;
+  private blob: Blob;
   private passPhrase: String = '';
   private passPhraseConfirm: String = '';
 
@@ -34,6 +36,10 @@ export class EncryptComponent implements OnInit {
     }
     else {
       console.log('The passwords matched');
+      console.log(this.passPhrase)
+      this.blob = new Blob([this.text as any], { type: 'text' });
+      saveAs(this.blob, "hello.txt");
+      this.blob = null;
     }
   }
 
