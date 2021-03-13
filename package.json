@@ -22,6 +22,7 @@
     "@ckeditor/ckeditor5-angular": "^2.0.1",
     "@ckeditor/ckeditor5-build-classic": "^26.0.0",
     "file-saver": "^2.0.5",
+    "node-forge": "^0.10.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
@@ -30,6 +31,7 @@
     "@angular-devkit/build-angular": "~0.1100.2",
     "@angular/cli": "~11.0.2",
     "@angular/compiler-cli": "~11.0.1",
+    "@types/file-saver": "^2.0.1",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
