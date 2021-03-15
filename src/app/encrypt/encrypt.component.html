@@ -1,5 +1,6 @@
-<p>encrypt works!</p>
-<ckeditor [(ngModel)]="text" [config]="{ toolbar: [ 'heading', '|', 'bold', 'italic', 'link', '|', 'insertTable', '|', 'bulletedList', 'numberedList', '|', 'outdent', 'indent', '|', 'blockQuote', '|', 'undo', 'redo'] }" [editor]="editorObj"></ckeditor>
+<div class="editor-component">
+  <ckeditor [(ngModel)]="text" [config]="{ toolbar: [ 'heading', '|', 'bold', 'italic', 'link', '|', 'insertTable', '|', 'bulletedList', 'numberedList', '|', 'outdent', 'indent', '|', 'blockQuote', '|', 'undo', 'redo'] }" [editor]="editorObj"></ckeditor>
+</div>
 <div>
   <label>Enter Password</label>
   <input #pass type="password" (keyup)="password(pass.value, true)">

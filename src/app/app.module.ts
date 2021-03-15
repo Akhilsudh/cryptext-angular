@@ -8,6 +8,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { FormsModule } from '@angular/forms';
 import { DecryptComponent } from './decrypt/decrypt.component';
 import { EncryptComponent } from './encrypt/encrypt.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { EncryptComponent } from './encrypt/encrypt.component';
     BrowserModule,
     AppRoutingModule,
     CKEditorModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

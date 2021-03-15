@@ -8,4 +8,10 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'cryptext-angular';
+  isNavbarCollapsed = true;
+
+  constructor(private router: Router) { }
+  route(path: String) {
+    this.router.navigate(['/' + path]);
+  }
 }
