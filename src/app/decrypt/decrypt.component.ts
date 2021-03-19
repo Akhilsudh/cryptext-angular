@@ -14,7 +14,10 @@ export class DecryptComponent implements OnInit {
   public text: String;
 
   constructor(private router: Router, private ds: DataService) { 
-    this.text = this.aes_decrypt(this.ds.getData(), 'akhil');
+    this.text = this.aes_decrypt(this.ds.getData(), this.ds.getPassPhrase());
+    this.ds.clearData();
+    console.log(this.ds.getData());
+    console.log(this.ds.getPassPhrase());
   }
 
   aes_decrypt(text: String, passPhrase: String): string {

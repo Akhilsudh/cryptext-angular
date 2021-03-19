@@ -1,10 +1,35 @@
-<div class="Block">
+<p>Home Page Works</p>
+
+<div class="inline-block">
+  <div
+    ngfDrop
+    multiple         = "1"
+    selectable       = "1"
+    [(validDrag)]    = "validComboDrag"
+    [(file)]        = "file"
+    [maxSize]        = "maxSize"
+    [(lastInvalids)] = "lastInvalids"
+    [(dragFiles)]    = "dragFiles"
+    class            = "well my-drop-zone"
+    [class.invalid-drag] = "validComboDrag===false"
+    [class.valid-drag]   = "validComboDrag"
+    (filesChange) = "lastFileAt=getDate()"
+    [fileDropDisabled] = "fileDropDisabled"
+  >
+    Drop a <strong>File</strong> into this zone or click to select one
+  </div>
+
+<button (click)="testFile()">
+  Test
+</button>
+
+<!-- <div class="Block">
   <label id="lbl">Code </label>
   <input type='file' (change)="fileChanged($event)">
-</div>
+</div> -->
 <button (click)="openDocument()">
-  Test Content
+  Decrypt Content
 </button>
-<button (click)="createDocument()">
+<!-- <button (click)="createDocument()">
   Create Document
-</button>
+</button> -->

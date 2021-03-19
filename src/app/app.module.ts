@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { DecryptComponent } from './decrypt/decrypt.component';
 import { EncryptComponent } from './encrypt/encrypt.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ngfModule } from "angular-file"
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     CKEditorModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    ngfModule
   ],
   providers: [],
   bootstrap: [AppComponent]
