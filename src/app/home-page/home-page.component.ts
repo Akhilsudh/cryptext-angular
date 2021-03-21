@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { ngf } from "angular-file";
 import { pkcs5, cipher, util } from 'node-forge';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { GenericModalComponent } from '../generic-modal/generic-modal.component';
 
 @Component({
   selector: 'app-home-page',
@@ -24,12 +26,12 @@ export class HomePageComponent implements OnInit {
   baseDropValid:any;
 
 
-  constructor(private router: Router, private ds: DataService) { }
+  constructor(private router: Router, private ds: DataService, private modalService: NgbModal) { }
 
   decryptContent() {
     console.log('hello');
-    if(this.passPhrase) {
-      if(this.file) {
+    if(this.file) {
+      if(this.passPhrase) {
         this.fileReader = new FileReader();
         this.fileReader.onload = (e: Event) => {
           this.fileContent = this.fileReader.result as String;
@@ -37,26 +39,29 @@ export class HomePageComponent implements OnInit {
           console.log(this.passPhrase);
           console.log(this.fileContent);
           try {
-            this.ds.setData(this.aes_decrypt(this.fileContent, this.passPhrase));
+            this.ds.setData(this.aesDecrypt(this.fileContent, this.passPhrase));
             this.router.navigate(['/decrypt']);
           }
           catch {
             this.ds.clearData();
             console.log('Wrong Password');
+            this.openModal('Wrong Password');
           }
         }
         this.fileReader.readAsText(this.file);
       }
       else {
-        console.log('Please select a file')
+        console.log('Enter Password');
+        this.openModal('Enter Password');
       }
     }
     else {
-      console.log('Enter Password');
+      console.log('Please select a file to decrypt');
+      this.openModal('Please select a file');
     }
   }
 
-  aes_decrypt(text: String, passPhrase: String): string {
+  aesDecrypt(text: String, passPhrase: String): string {
     const key = pkcs5.pbkdf2(passPhrase, '9bx03e6e4ftowc6a44gkgx5hiv71mgb6', 1000, 16);
     const d = cipher.createDecipher('AES-CBC', key);
     d.start({ iv: '9vfko0kqr4ihi5c7' });
@@ -65,6 +70,11 @@ export class HomePageComponent implements OnInit {
     var returnValue = d.output.toString();
     console.log(returnValue);
     return returnValue;
+  }
+
+  openModal(message: String) {
+    const modalRef = this.modalService.open(GenericModalComponent);
+    modalRef.componentInstance.message = message;
   }
 
   getDate(){

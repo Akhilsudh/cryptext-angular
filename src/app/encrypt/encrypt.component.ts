@@ -4,6 +4,8 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 import { DataService } from '../services/data.service';
 import { saveAs } from 'file-saver/dist/FileSaver';
 import { pkcs5, cipher, util } from 'node-forge';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { GenericModalComponent } from '../generic-modal/generic-modal.component';
 
 @Component({
   selector: 'app-encrypt',
@@ -12,12 +14,13 @@ import { pkcs5, cipher, util } from 'node-forge';
 })
 export class EncryptComponent implements OnInit {
   public editorObj = ClassicEditor;
-  public text: String;
+  public text: String = '';
+  public fileName: String = '';
   private blob: Blob;
   private passPhrase: String = '';
   private passPhraseConfirm: String = '';
 
-  constructor(private router: Router, private ds: DataService) { 
+  constructor(private router: Router, private ds: DataService, private modalService: NgbModal) { 
     this.text = this.ds.getData();
   }
 
@@ -25,22 +28,32 @@ export class EncryptComponent implements OnInit {
     (flag) ? this.passPhrase = value : this.passPhraseConfirm = value;
   }
 
+  openModal(message: String) {
+    const modalRef = this.modalService.open(GenericModalComponent);
+    modalRef.componentInstance.message = message;
+  }
+
   encrypt() {
-    if(this.passPhrase == '') {
-      alert ('Please Enter Password');
+    if(this.text == '') {
+      this.openModal('Please Enter Text to Encrypt');
+    }
+    else if(this.passPhrase == '') {
+      this.openModal('Please Enter Password');
     }
     else if(this.passPhraseConfirm == '') {
-      alert ('Please Confirm Password');
+      this.openModal('Please Confirm Password');
     }
     else if(this.passPhrase != this.passPhraseConfirm) {
-      alert ('The Passwords Do Not Match')
+      this.openModal('The Passwords Do Not Match');
+    }
+    else if(this.fileName == '') {
+      this.openModal('Please Provide a File Name');
     }
     else {
       console.log('The passwords matched');
-      console.log(this.passPhrase)
       var encrypted = this.aes_encrypt(this.text, this.passPhrase);
       this.blob = new Blob([encrypted as any], { type: 'text' });
-      saveAs(this.blob, "hello.txt");
+      saveAs(this.blob, this.fileName + '.txt');
       this.blob = null;
     }
   }

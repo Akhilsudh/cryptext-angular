@@ -9,14 +9,16 @@ import { FormsModule } from '@angular/forms';
 import { DecryptComponent } from './decrypt/decrypt.component';
 import { EncryptComponent } from './encrypt/encrypt.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ngfModule } from "angular-file"
+import { ngfModule } from "angular-file";
+import { GenericModalComponent } from './generic-modal/generic-modal.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     DecryptComponent,
-    EncryptComponent
+    EncryptComponent,
+    GenericModalComponent
   ],
   imports: [
     BrowserModule,

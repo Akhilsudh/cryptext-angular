@@ -9,6 +9,10 @@
   <label>Confirm Password</label>
   <input #passConfirm type="password" (keyup)="password(passConfirm.value, false)">
 </div>
+<div>
+  <label>File Name</label>
+  <input [(ngModel)]="fileName">
+</div>
 <button (click)="encrypt()">
   Test Content
 </button>
