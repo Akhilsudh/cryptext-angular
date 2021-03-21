@@ -4,24 +4,37 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DataService {
+  // private data: String = '';
+  // private passPhrase: String = '';
   private data: String = '';
-  private passPhrase: String = '';
   
-  setData(data: String, passPhrase: String) {
+  // setData(data: String, passPhrase: String) {
+  //   this.data = data;
+  //   this.passPhrase = passPhrase;
+  // }
+
+  setData(data: String) {
     this.data = data;
-    this.passPhrase = passPhrase;
   }
 
   getData() {
     return this.data;
   }
 
-  getPassPhrase() {
-    return this.passPhrase;
-  }
+  // getData() {
+  //   return this.data;
+  // }
+
+  // getPassPhrase() {
+  //   return this.passPhrase;
+  // }
+
+  // clearData() {
+  //   this.data = '';
+  //   this.passPhrase = '';
+  // }
 
   clearData() {
     this.data = '';
-    this.passPhrase = '';
   }
 }

@@ -1,35 +1,38 @@
-<p>Home Page Works</p>
-
-<div class="inline-block">
-  <div
-    ngfDrop
-    multiple         = "1"
-    selectable       = "1"
-    [(validDrag)]    = "validComboDrag"
-    [(file)]        = "file"
-    [maxSize]        = "maxSize"
-    [(lastInvalids)] = "lastInvalids"
-    [(dragFiles)]    = "dragFiles"
-    class            = "well my-drop-zone"
-    [class.invalid-drag] = "validComboDrag===false"
-    [class.valid-drag]   = "validComboDrag"
-    (filesChange) = "lastFileAt=getDate()"
-    [fileDropDisabled] = "fileDropDisabled"
-  >
-    Drop a <strong>File</strong> into this zone or click to select one
+<div class="home-page">
+  <div class="centered-content">
+    <div class="center-block">
+      <div
+        ngfDrop
+        multiple         = "1"
+        selectable       = "1"
+        [(validDrag)]    = "validComboDrag"
+        [(file)]        = "file"
+        [maxSize]        = "maxSize"
+        [(lastInvalids)] = "lastInvalids"
+        [(dragFiles)]    = "dragFiles"
+        class            = "well my-drop-zone"
+        [class.invalid-drag] = "validComboDrag===false"
+        [class.valid-drag]   = "validComboDrag"
+        (filesChange) = "lastFileAt=getDate()"
+        [fileDropDisabled] = "fileDropDisabled"
+      >
+        Drop a <strong>File</strong> into this zone or click to select a file to decrypt
+      </div>
+    </div>
+    <div *ngIf="file" class="center-block">
+      {{ file.name }} uploaded
+    </div>
+    <div *ngIf="!file" class="center-block">
+      No file uploaded
+    </div>
+    <div class="center-block">
+      <label>Enter Password</label>
+      <input [(ngModel)]="passPhrase" type="password">
+    </div>
+    <div class="center-block">
+      <button (click)="decryptContent()">
+        Decrypt Content
+      </button>
+    </div>
   </div>
-
-<button (click)="testFile()">
-  Test
-</button>
-
-<!-- <div class="Block">
-  <label id="lbl">Code </label>
-  <input type='file' (change)="fileChanged($event)">
-</div> -->
-<button (click)="openDocument()">
-  Decrypt Content
-</button>
-<!-- <button (click)="createDocument()">
-  Create Document
-</button> -->
+</div>
