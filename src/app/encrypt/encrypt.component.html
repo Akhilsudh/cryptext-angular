@@ -1,19 +1,22 @@
-<div class="editor-component">
+<div class="encrypt-component">
   <ckeditor [(ngModel)]="text" [config]="{ toolbar: [ 'heading', '|', 'bold', 'italic', 'link', '|', 'insertTable', '|', 'bulletedList', 'numberedList', '|', 'outdent', 'indent', '|', 'blockQuote', '|', 'undo', 'redo'] }" [editor]="editorObj"></ckeditor>
+  <div>
+    <input #pass type="password" (keyup)="password(pass.value, true)" class="form-control" placeholder="Enter Password" aria-label="Enter Password" aria-describedby="basic-addon2">
+    <!-- <label>Enter Password</label>
+    <input #pass type="password" (keyup)="password(pass.value, true)"> -->
+  </div>
+  <div>
+    <input #passConfirm type="password" (keyup)="password(passConfirm.value, false)" class="form-control" placeholder="Confirm Password" aria-label="Confirm Password" aria-describedby="basic-addon2">
+    <!-- <label>Confirm Password</label>
+    <input #passConfirm type="password" (keyup)="password(passConfirm.value, false)"> -->
+  </div>
+  <div>
+    <input [(ngModel)]="fileName" type="text" class="form-control" placeholder="Enter a Filename" aria-label="Enter Filename" aria-describedby="basic-addon2">
+    <!-- <label>File Name</label>
+    <input [(ngModel)]="fileName"> -->
+  </div>
+  <button class="btn btn-lg btn-outline-dark" (click)="encrypt()">
+    Encrypt Content
+  </button>
 </div>
-<div>
-  <label>Enter Password</label>
-  <input #pass type="password" (keyup)="password(pass.value, true)">
-</div>
-<div>
-  <label>Confirm Password</label>
-  <input #passConfirm type="password" (keyup)="password(passConfirm.value, false)">
-</div>
-<div>
-  <label>File Name</label>
-  <input [(ngModel)]="fileName">
-</div>
-<button (click)="encrypt()">
-  Test Content
-</button>
 <p>{{ text }}</p>
