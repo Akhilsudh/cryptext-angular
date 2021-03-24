@@ -44,8 +44,8 @@ export class HomePageComponent implements OnInit {
           }
           catch {
             this.ds.clearData();
-            console.log('Wrong Password');
-            this.openModal('Wrong Password');
+            console.log('Wrong Password!');
+            this.openModal('Wrong Password!');
           }
         }
         this.fileReader.readAsText(this.file);
@@ -57,12 +57,12 @@ export class HomePageComponent implements OnInit {
     }
     else {
       console.log('Please select a file to decrypt');
-      this.openModal('Please select a file');
+      this.openModal('Please select a file to decrypt');
     }
   }
 
   aesDecrypt(text: String, passPhrase: String): string {
-    const key = pkcs5.pbkdf2(passPhrase, '9bx03e6e4ftowc6a44gkgx5hiv71mgb6', 1000, 16);
+    const key = pkcs5.pbkdf2(passPhrase, '9bx03e6e4ftowc6a44gkgx5hiv71mgb6', 1000, 32);
     const d = cipher.createDecipher('AES-CBC', key);
     d.start({ iv: '9vfko0kqr4ihi5c7' });
     d.update(new util.ByteStringBuffer(util.decode64(text)));

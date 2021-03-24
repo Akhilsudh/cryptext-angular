@@ -59,7 +59,7 @@ export class EncryptComponent implements OnInit {
   }
 
   aes_encrypt(text: String, passPhrase: String): string {
-    const key = pkcs5.pbkdf2(passPhrase, '9bx03e6e4ftowc6a44gkgx5hiv71mgb6', 1000, 16);
+    const key = pkcs5.pbkdf2(passPhrase, '9bx03e6e4ftowc6a44gkgx5hiv71mgb6', 1000, 32);
     const c = cipher.createCipher('AES-CBC', key);
     c.start({ iv: '9vfko0kqr4ihi5c7' });
     c.update(util.createBuffer(text, 'utf8'));

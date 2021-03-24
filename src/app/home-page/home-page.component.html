@@ -26,7 +26,7 @@
       No file uploaded
     </div>
     <div class="center-block">
-      <input [(ngModel)]="passPhrase" type="password" class="form-control" placeholder="Password" aria-label="Enter Password" aria-describedby="basic-addon2">
+      <input (keyup.enter)="decryptContent()" [(ngModel)]="passPhrase" type="password" class="form-control" placeholder="Password" aria-label="Enter Password" aria-describedby="basic-addon2">
     </div>
     <div class="center-block">
       <button class="btn btn-lg btn-outline-dark" (click)="decryptContent()">
