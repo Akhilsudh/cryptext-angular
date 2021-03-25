@@ -20,16 +20,16 @@
       </div>
     </div>
     <div *ngIf="file" class="center-block">
-      {{ file.name }} uploaded
+      {{ file.name }} selected
     </div>
     <div *ngIf="!file" class="center-block">
-      No file uploaded
+      No file selected
     </div>
     <div class="center-block">
       <input (keyup.enter)="decryptContent()" [(ngModel)]="passPhrase" type="password" class="form-control" placeholder="Password" aria-label="Enter Password" aria-describedby="basic-addon2">
     </div>
     <div class="center-block">
-      <button class="btn btn-lg btn-outline-dark" (click)="decryptContent()">
+      <button class="btn btn-lg btn-dark" (click)="decryptContent()">
         Decrypt Content
       </button>
     </div>

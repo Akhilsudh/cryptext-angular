@@ -1,5 +1,6 @@
 <div class="encrypt-component">
   <div class="form-group">
+    <label for="exampleInputEmail1">Enter Content to Encrypt</label>
     <ckeditor [(ngModel)]="text" [config]="{ toolbar: [ 'heading', '|', 'bold', 'italic', 'link', '|', 'insertTable', '|', 'bulletedList', 'numberedList', '|', 'outdent', 'indent', '|', 'blockQuote', '|', 'undo', 'redo'] }" [editor]="editorObj"></ckeditor>
   </div>
   <div class="form-group">
