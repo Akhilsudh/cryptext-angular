@@ -2,10 +2,10 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 import { saveAs } from 'file-saver/dist/FileSaver';
-import { pkcs5, cipher, util } from 'node-forge';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { GenericModalComponent } from '../generic-modal/generic-modal.component';
 import { DataService } from '../services/data.service';
+import { AesTools } from '../aes-tools';
 
 @Component({
   selector: 'app-decrypt',
@@ -19,6 +19,7 @@ export class DecryptComponent implements OnInit {
   private blob: Blob;
   private passPhrase: String = '';
   private passPhraseConfirm: String = '';
+  private aesToolsObj: AesTools;
 
   constructor(private router: Router, private ds: DataService, private modalService: NgbModal) {
     this.text = this.ds.getData();
@@ -53,22 +54,12 @@ export class DecryptComponent implements OnInit {
     }
     else {
       console.log('The passwords matched');
-      var encrypted = this.aes_encrypt(this.text, this.passPhrase);
+      this.aesToolsObj = new AesTools(this.passPhrase);
+      var encrypted = this.aesToolsObj.aes_encrypt(this.text);
       this.blob = new Blob([encrypted as any], { type: 'text' });
       saveAs(this.blob, this.fileName + '.txt');
       this.blob = null;
     }
-  }
-
-  aes_encrypt(text: String, passPhrase: String): string {
-    const key = pkcs5.pbkdf2(passPhrase, '9bx03e6e4ftowc6a44gkgx5hiv71mgb6', 1000, 32);
-    const c = cipher.createCipher('AES-CBC', key);
-    c.start({ iv: '9vfko0kqr4ihi5c7' });
-    c.update(util.createBuffer(text, 'utf8'));
-    c.finish();
-    var returnValue = util.encode64(c.output.getBytes());
-    console.log(returnValue);
-    return returnValue;
   }
 
   @HostListener('unloaded')
