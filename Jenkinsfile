@@ -11,7 +11,7 @@ pipeline {
       steps { sh 'npm run-script build' }
     }
     stage('Firebase Deploy Stage') {
-      steps { echo $FIREBASE_TOKEN }
+      steps { sh 'echo $FIREBASE_TOKEN' }
     }
   }
 }
