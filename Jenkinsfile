@@ -1,11 +1,17 @@
 pipeline {
-  agent any 
+  agent any
+  environment {
+    FIREBASE_TOKEN = credentials('firebase-token')
+  }
   stages {
-    stage('Install') {
+    stage('NPM Install Stage') {
       steps { sh 'npm install' }
     }
-    stage('Build') {
+    stage('Build Stage') {
       steps { sh 'npm run-script build' }
+    }
+    stage('Firebase Deploy Stage') {
+      steps { echo $FIREBASE_TOKEN }
     }
   }
 }
