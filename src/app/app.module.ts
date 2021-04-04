@@ -10,7 +10,8 @@ import { DecryptComponent } from './decrypt/decrypt.component';
 import { EncryptComponent } from './encrypt/encrypt.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ngfModule } from "angular-file";
-import { GenericModalComponent } from './generic-modal/generic-modal.component'
+import { GenericModalComponent } from './generic-modal/generic-modal.component';
+import { HelpComponent } from './help/help.component'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { GenericModalComponent } from './generic-modal/generic-modal.component'
     HomePageComponent,
     DecryptComponent,
     EncryptComponent,
-    GenericModalComponent
+    GenericModalComponent,
+    HelpComponent
   ],
   imports: [
     BrowserModule,
