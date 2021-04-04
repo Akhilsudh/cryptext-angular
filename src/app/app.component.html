@@ -4,7 +4,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="#">
-      <img src="assets/images/image.png" width="150" alt="" class="d-inline-block align-middle mr-2">
+      <img src="assets/images/logo.png" width="150" alt="" class="d-inline-block align-middle mr-2">
     </a>
     <div [ngbCollapse]="isNavbarCollapsed" class="navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
@@ -15,7 +15,7 @@
           <a class="nav-link" style="cursor: pointer" (click)="route('encrypt')">Encrypt</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="cursor: pointer" href="#">About</a>
+          <a class="nav-link" style="cursor: pointer" (click)="route('help')">Help</a>
         </li>
       </ul>
     </div>
