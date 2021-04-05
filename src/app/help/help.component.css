@@ -1,21 +1,27 @@
 .help-component {
   padding: 20px;
+  margin: auto;
+  /* width: 50%; */
+  max-width: 1000px;
 }
 
-ngb-accordion {
-  .card {
-    border: none;
-  }
+.help-component-content {
+  width: 100%;
+}
 
-  .card-header {
-    @extend .h4;
-    margin-bottom: 0;
-    color: black;
-    background-color: transparent;
-  }
+/deep/ .card-header{
+  background-color: #343a40;
+  text-align: left;
+}
 
-  .card-body{
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-  }
+.white {
+  color: white;
+  text-decoration: none;
+}
+.white:hover {
+  color: white;
+  text-decoration: none;
+}
+.white:active {
+  text-decoration: none;
 }

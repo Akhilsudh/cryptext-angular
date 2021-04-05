@@ -1,37 +1,44 @@
 <div class="help-component">
-  <p>Select one fo the following to </p>
-  <ngb-accordion [closeOthers]="true" activeIds="static-1">
-    <ngb-panel id="static-1" title="Encrypt">
-      <ng-template ngbPanelContent>
-        <div class="help-component">
-          <li>Navigate to the Encrypt section on the Navigation Bar at the top</li>
-          <li>Enter the text that needs encrypting in the Rick text editor field.</li>
-          <li>Enter the password and confirm the same in the confirm password field.</li>
-          <li>Enter a file name for the encrypted text file.</li>
-          <li>On clicking the Encrypt section, a file with the name provided will be generated. This file can be provided to the decrypt section </li>
-        </div>
-      </ng-template>
-    </ngb-panel>
-    <ngb-panel id="static-2" title="Decrypt">
-      <ng-template ngbPanelContent>
-        <div class="help-component">
-          <li>Navigate to the Decrypt section on the Navigation Bar at the top.</li>
-          <li>Drag an encrypted file into the drop zone or click on the zone to select a file to decrypt.</li>
-          <li>Enter the password in the password field.</li>
-          <li>Click on decrypt content button.</li>
-          <li>The decrypted content can be edited and re-encrypted with a new password value and file name.</li>
-        </div>
-      </ng-template>
-    </ngb-panel>
-    <ngb-panel id="static-3" title="About">
-      <ng-template ngbPanelContent>
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
-        aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-        craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-        labore sustainable VHS.
-      </ng-template>
-    </ngb-panel>
-  </ngb-accordion>
+  <div class="help-component-content">
+    <ngb-accordion [closeOthers]="true" activeIds="static-1">
+      <ngb-panel id="static-1">
+        <ng-template ngbPanelTitle>
+          <span class="white">To Encrypt Content</span>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <div class="help-component">
+            <li>Navigate to the Encrypt section on the Navigation Bar at the top</li>
+            <img src="assets/images/screenshots/encryptSection.png" class="img-fluid" alt="Responsive image">
+            <li>Enter the text that needs encrypting in the Rick text editor field.</li>
+            <li>Enter the password and confirm the same in the confirm password field.</li>
+            <li>Enter a file name for the encrypted text file.</li>
+            <li>On clicking the Encrypt section, a file with the name provided will be generated. This file can be provided to the decrypt section </li>
+          </div>
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel id="static-2">
+        <ng-template ngbPanelTitle>
+          <span class="white">To Decrypt Content</span>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <div class="help-component">
+            <li>Navigate to the Decrypt section on the Navigation Bar at the top.</li>
+            <img src="assets/images/screenshots/decryptSection.png" class="img-fluid" alt="Responsive image">
+            <li>Drag an encrypted file into the drop zone or click on the zone to select a file to decrypt.</li>
+            <li>Enter the password in the password field.</li>
+            <li>Click on decrypt content button.</li>
+            <li>The decrypted content can be edited and re-encrypted with a new password value and file name.</li>
+          </div>
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel id="static-3">
+        <ng-template ngbPanelTitle>
+          <span class="white">About</span>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          CRYPText is a tool that helps in encrypting content and generate a text file that can be decrypted with a previously specified password. CRYPText uses AES(Advanced Encryption Standard). It is a symmetric key algorithm, which means that the same password used to encrypt a file is used to decrypt it.
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </div>
 </div>
