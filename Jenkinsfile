@@ -6,13 +6,19 @@ pipeline {
   }
   stages {
     stage('NPM Install Stage') {
-      steps { sh 'npm install' }
+      steps {
+        sh 'npm install'
+      }
     }
     stage('Build Stage') {
-      steps { sh 'npm run-script build' }
+      steps {
+        sh 'ng build --prod'
+      }
     }
     stage('Firebase Deploy Stage') {
-      steps { sh 'firebase deploy --token $FIREBASE_TOKEN --project $FIREBASE_PROJECT_ID' }
+      steps {
+        sh 'firebase deploy --token $FIREBASE_TOKEN --project $FIREBASE_PROJECT_ID'
+      }
     }
   }
 }
