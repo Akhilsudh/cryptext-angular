@@ -10,6 +10,11 @@ pipeline {
         sh 'npm install'
       }
     }
+    stage('Test Stage') {
+      steps {
+        sh 'ng test --watch=false'
+      }
+    }
     stage('Build Stage') {
       steps {
         sh 'ng build --prod'
