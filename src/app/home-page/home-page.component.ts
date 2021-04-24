@@ -27,7 +27,7 @@ export class HomePageComponent implements OnInit {
   baseDropValid:any;
 
 
-  constructor(private router: Router, private ds: DataService, private modalService: NgbModal) { }
+  constructor(private router: Router, public ds: DataService, private modalService: NgbModal) { }
 
   decryptContent() {
     console.log('hello');

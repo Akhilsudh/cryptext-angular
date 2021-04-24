@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class DataService {
   // private data: String = '';
   // private passPhrase: String = '';
-  private data: String = '';
+  data: String = '';
   
   // setData(data: String, passPhrase: String) {
   //   this.data = data;

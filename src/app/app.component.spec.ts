@@ -1,15 +1,35 @@
 import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ngfModule } from 'angular-file';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DecryptComponent } from './decrypt/decrypt.component';
+import { EncryptComponent } from './encrypt/encrypt.component';
+import { GenericModalComponent } from './generic-modal/generic-modal.component';
+import { HelpComponent } from './help/help.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
       declarations: [
-        AppComponent
+        AppComponent,
+        HomePageComponent,
+        DecryptComponent,
+        EncryptComponent,
+        GenericModalComponent,
+        HelpComponent
+      ],
+      imports: [
+        BrowserModule,
+        AppRoutingModule,
+        CKEditorModule,
+        FormsModule,
+        NgbModule,
+        ngfModule
       ],
     }).compileComponents();
   });
@@ -20,16 +40,9 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'cryptext-angular'`, () => {
+  it('should have as title CrypText', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('cryptext-angular');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('cryptext-angular app is running!');
+    expect(app.title).toEqual('CrypText');
   });
 });

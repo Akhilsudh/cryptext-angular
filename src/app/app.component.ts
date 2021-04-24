@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'cryptext-angular';
+  title = 'CrypText';
   isNavbarCollapsed = true;
 
   constructor(private router: Router) { }
