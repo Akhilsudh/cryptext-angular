@@ -1,8 +1,8 @@
-# CryptextAngular
+# CRYPText (Angular Version)
 
 CRYPText is an angular based tool that helps in encrypting rich text and generate a file that can be decrypted with a previously specified password later. The tool also provides the option of editing an existing encrypted file and recrypt the same.
 
-CRYPText uses AES(Advanced Encryption Standard). It is a symmetric key algorithm, which means that the same password used to encrypt a file is used to decrypt it.
+CRYPText uses [AES (Advanced Encryption Standard)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) for encrypting text content.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
 
