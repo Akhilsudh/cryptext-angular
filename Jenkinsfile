@@ -12,12 +12,12 @@ pipeline {
     }
     stage('Test Stage') {
       steps {
-        sh 'ng test --watch=false'
+        sh 'npm run test-ci'
       }
     }
     stage('Build Stage') {
       steps {
-        sh 'ng build --prod'
+        sh 'npm run build-ci'
       }
     }
     stage('Firebase Deploy Stage') {
